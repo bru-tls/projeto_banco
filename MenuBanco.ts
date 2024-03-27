@@ -1,17 +1,34 @@
 import readlinesync = require("readline-sync")
 import { colors } from "../util/Colors";
 import { Conta } from "../src/model/conta";
+import { ContaCorrente } from "../src/model/ContaCorrente";
+import { ContaPoupanca } from "../src/model/ContaPoupanca";
+
 
 export function main(){
     {
+    
+   // Instanciando um novo Objeto da Classe Conta
+   console.log("\nCriar o Objeto da Classe Conta")
+   let c1: Conta = new Conta(1, 123, 1, "Natasha", 1000000);
+   c1.visualizar();
+  
 
-        const conta: Conta = new Conta(1, 123, 1, "João da Silva", 1000);
-        conta.visualizar();
-        conta.sacar(0);
-        conta.visualizar();
-        conta.depositar(0);
-        conta.visualizar();       
-    }
+     // Objeto da Classe ContaCorrente (Teste)
+    const contacorrente: ContaCorrente = new ContaCorrente(2, 123, 1, "Mariana", 15000, 1000);
+    contacorrente.visualizar();
+    contacorrente.sacar(2000);
+    contacorrente.visualizar();
+    contacorrente.depositar(1000);
+    contacorrente.visualizar();
+
+    // Objeto da Classe ContaPoupanca (teste)
+    const contapoupanca: ContaPoupanca = new ContaPoupanca(3, 123, 2, "Victor", 1000, 10);
+    contapoupanca.visualizar();
+    contapoupanca.sacar(200);
+    contapoupanca.visualizar();
+    contapoupanca.depositar(1000);
+    contapoupanca.visualizar();   }
     
 
 let opcao: number;
@@ -36,7 +53,7 @@ console.log("          \n BANCO DO BRAZIL COM Z \n \n        ");
         opcao = readlinesync.questionInt("");
 
         if (opcao == 9) {
-            console.log("\nBanco do Brazil com Z - O seu Futuro começa aqui!");
+            console.log("\t\nBanco do Brazil com Z - O seu Futuro começa aqui!");
             sobre();
             process.exit(0);
         }
@@ -84,10 +101,10 @@ console.log("          \n BANCO DO BRAZIL COM Z \n \n        ");
 }
 
 function sobre(): void {
-            console.log("\n**********************************************");
-            console.log("Projeto Desenvolvido por: Bruna Teles");
-        console.log("github.com/bru-tls");
-            console.log("******************************************");
+            console.log("\n\t\t\t\**********************************************");
+            console.log("\t\t\t\tProjeto Desenvolvido por: Bruna Teles");
+        console.log(" \t \t  \t\t\     github.com/bru-tls");
+            console.log("\t\t\t******************************************");
         }
         
         function keyPress(): void {
