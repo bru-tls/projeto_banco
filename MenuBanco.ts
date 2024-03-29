@@ -3,35 +3,33 @@ import { colors } from "../util/Colors";
 import { Conta } from "../src/model/conta";
 import { ContaCorrente } from "../src/model/ContaCorrente";
 import { ContaPoupanca } from "../src/model/ContaPoupanca";
+import { ContaController } from "../src/repository/controller/ContaController";
 
 
 export function main(){
-    {
+
+    let contas: ContaController = new ContaController
+
+    let opcao: number
+    let numero, agencia, tipo, saldo, limite, aniversario: number
+    let titular: string 
+    const tipoContas = ['Conta corrente' , 'Conta poupanca']
+
+
+    let cc1: ContaCorrente = new ContaCorrente(contas.gerarNumero(), 123, 1, "João da Silva", 1000, 100.0);
+    contas.cadastrar(cc1);
     
-   // Instanciando um novo Objeto da Classe Conta
-   console.log("\nCriar o Objeto da Classe Conta")
-   let c1: Conta = new Conta(1, 123, 1, "Natasha", 1000000);
-   c1.visualizar();
-  
-
-     // Objeto da Classe ContaCorrente (Teste)
-    const contacorrente: ContaCorrente = new ContaCorrente(2, 123, 1, "Mariana", 15000, 1000);
-    contacorrente.visualizar();
-    contacorrente.sacar(2000);
-    contacorrente.visualizar();
-    contacorrente.depositar(1000);
-    contacorrente.visualizar();
-
-    // Objeto da Classe ContaPoupanca (teste)
-    const contapoupanca: ContaPoupanca = new ContaPoupanca(3, 123, 2, "Victor", 1000, 10);
-    contapoupanca.visualizar();
-    contapoupanca.sacar(200);
-    contapoupanca.visualizar();
-    contapoupanca.depositar(1000);
-    contapoupanca.visualizar();   }
+    let cc2: ContaCorrente = new ContaCorrente(contas.gerarNumero(), 124, 1, "Maria da Silva", 2000, 100.0);
+    contas.cadastrar(cc2);
     
-
-let opcao: number;
+    let cp1: ContaPoupanca = new ContaPoupanca(contas.gerarNumero(), 125, 2, "Mariana dos Santos", 4000, 12);
+    contas.cadastrar(cp1);
+    
+    let cp2: ContaPoupanca = new ContaPoupanca(contas.gerarNumero(), 125, 2, "Juliana Ramos", 8000, 15);
+    contas.cadastrar(cp2);
+    
+    contas.listarTodas();
+      
 
 
 while (true) {
@@ -50,7 +48,7 @@ console.log("          \n BANCO DO BRAZIL COM Z \n \n        ");
 
 
         console.log("Entre com a opção desejada: ");
-        opcao = readlinesync.questionInt("");
+        const opcao = readlinesync.questionInt("");
 
         if (opcao == 9) {
             console.log("\t\nBanco do Brazil com Z - O seu Futuro começa aqui!");
@@ -61,39 +59,69 @@ console.log("          \n BANCO DO BRAZIL COM Z \n \n        ");
         switch (opcao) {
             case 1:
                 console.log("\nCriar conta\n");
+                
+          console.log("Digite o número da agência: ")
+                agencia= readlinesync.questionInt("")
 
-                break;
-            case 2:
+                console.log("Digite o nome do titular da conta: ")
+                titular= readlinesync.question("")
+             
+                console.log("Digite o tipo da conta: ")
+                tipo= readlinesync.questionInt("")
+
+                console.log("Digite o saldo da conta: (R$) ")
+                saldo= readlinesync.questionFloat("")
+
+switch (tipo){
+    case 1: 
+console.log("Digite o limite da conta: (R$) ")
+limite = readlinesync.questionFloat("")
+contas.cadastrar(
+    new ContaCorrente(contas.gerarNumero(), agencia, tipo, titular, saldo, limite))
+    break
+
+case 2: 
+console.log("Digite o dia do aniversário da conta poupança: ")
+                aniversario = readlinesync.questionInt("")
+                contas.cadastrar(new ContaPoupanca(contas.gerarNumero(), agencia, tipo, titular, saldo, aniversario))
+                break
+}
+                keyPress()
+                break
+
+                case 2:
                 console.log("\nListar todas as contas\n");
-
+            contas.listarTodas();
+            keyPress()
                 break;
+                
             case 3:
                 console.log("\nConsultar dados da conta - por número\n");
-
+                keyPress()
                 break;
             case 4:
                 console.log("\nAtualizar dados da conta\n");
-
+                keyPress()
                 break;
             case 5:
                 console.log("\nApagar uma conta\n");
-
+                keyPress()
                 break;
             case 6:
                 console.log("\nSaque\n");
-
+                keyPress()
                 break;
             case 7:
                 console.log("\nDepósito\n");
-
+                keyPress()
                 break;
             case 8:
                 console.log("\nTransferência entre Contas\n");
-
+                keyPress()
                 break;
             default:
                 console.log("\nOpção Inválida!\n");
-
+                keyPress()
                 break;
         }   
         
