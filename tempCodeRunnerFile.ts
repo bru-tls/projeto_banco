@@ -10,7 +10,7 @@ export function main(){
 
     let contas: ContaController = new ContaController
 
-    let opcao, valor, numeroDestino: number
+    let opcao, valor, contaDestino: number
     let numero, agencia, tipo, saldo, limite, aniversario: number
     let titular: string 
     const tipoContas = ['Conta corrente' , 'Conta poupanca']
@@ -74,7 +74,7 @@ console.log("          \n BANCO DO BRAZIL COM Z \n \n        ");
 
 switch (tipo){
     case 1: 
-console.log("Digite o limite da conta:  ")
+console.log("Digite o limite da conta: (R$) ")
 limite = readlinesync.questionFloat("")
 contas.cadastrar(
     new ContaCorrente(contas.gerarNumero(), agencia, tipo, titular, saldo, limite))
@@ -139,7 +139,10 @@ break}
 }               
                 keyPress()
                 break;
-    
+ 
+
+            
+            
             
     case 5:
                 console.log("\nApagar uma conta\n");
@@ -150,7 +153,10 @@ contas.deletar(numero)
 
                 keyPress()
                 break;
-   
+  
+           
+           
+           
      case 6:
                 console.log("\nSaque\n")
 
@@ -165,41 +171,15 @@ contas.sacar(numero, valor)
 
                 keyPress()
                 break;
-
-            
             case 7:
                 console.log("\nDepósito\n");
-
-
-                console.log("\nDigite o número da conta: \n");
-                numero= readlinesync.questionInt("")
-
-                console.log("\nDigite o valor do deposito: \n")
-                valor =  readlinesync.questionFloat("")
-
-contas.depositar(numero, valor)
                 keyPress()
                 break;
-
-
-       case 8:
+            case 8:
                 console.log("\nTransferência entre Contas\n");
-                console.log("\nDigite o número da conta de origem: ")
-numero= readlinesync.questionInt("")
-
-console.log("Digite o número da conta de destino: ")
-numeroDestino = readlinesync.questionInt("")
-
-console.log("Digite o valor da transferencia: ")
-valor = readlinesync.questionFloat("")
-
-contas.transferir(numero, numeroDestino, valor)
-
                 keyPress()
                 break;
-        
-    
-                default:
+            default:
                 console.log("\nOpção Inválida!\n");
                 keyPress()
                 break;
