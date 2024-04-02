@@ -44,13 +44,13 @@ console.log("          \n BANCO DO BRAZIL COM Z \n \n        ");
         console.log("    6 - Sacar                                ");
         console.log("    7 - Depositar                            ");
         console.log("    8 - Transferir valores entre Contas      ");
-        console.log("    9 - Sair                                 ");
-
+        console.log("    9 - Consultar conta pelo nome do titular ");
+        console.log("    0 - Sair                                 ");
 
         console.log("Entre com a opção desejada: ");
         const opcao = readlinesync.questionInt("");
 
-        if (opcao == 9) {
+        if (opcao == 0) {
             console.log("\t\nBanco do Brazil com Z - O seu Futuro começa aqui!");
             sobre();
             process.exit(0);
@@ -198,7 +198,16 @@ contas.transferir(numero, numeroDestino, valor)
                 keyPress()
                 break;
         
-    
+        
+     case 9:   console.log("\nConsultar conta pelo nome do titular\n");
+     console.log("Digite o nome do titular da conta: ")
+     titular = readlinesync.question("")
+     contas.procurarPorIitular(titular)
+
+
+
+keyPress()
+break    
                 default:
                 console.log("\nOpção Inválida!\n");
                 keyPress()
